@@ -50,10 +50,11 @@
 <form th:action="@{/lista}">
     Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
     &nbsp;
-    <input type="submit" value="Search" />
+    <input type="submit" value="Search" class="btn btn-light" />
     &nbsp;
-    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+    <input type="button" value="Clear" class="btn btn-light" id="btnClear" onclick="clearSearch()" />
 </form>
+<br>
     <table class="lomake table table-striped">
         
             <tr>

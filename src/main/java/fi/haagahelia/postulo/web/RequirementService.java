@@ -10,7 +10,7 @@ import fi.haagahelia.postulo.domain.RequirementRepository;
 
 /*
  * This service is created to enable the search functionality
- * preferably simplify things and remove the extra things 
+ *  
  */
 
 @Service

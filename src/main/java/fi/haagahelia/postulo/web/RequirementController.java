@@ -52,7 +52,7 @@ public class RequirementController {
 	// home page
 	@RequestMapping(value= {"/", "/home"}) 
 	public String home() {
-	// nothing required here yet
+	// 
 	return "home"; }
 	
 	
