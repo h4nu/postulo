@@ -53,6 +53,7 @@
 		   <th>Priority</th>
 		   <th>Source</th>
 		   <th>Owner</th>
+		   <th>Date</th>
 		   <th> </th>
 		   <th sec:authorize="hasAuthority('ADMIN')"> </th>
 		</tr>  
@@ -64,6 +65,7 @@
 		<td th:text="${requirement.priority}"></td>
 		<td th:text="${requirement.source}"></td>
 		<td th:text="${requirement.owner}"></td>
+		<td th:text="${requirement.rdate}"></td>
 		
 		
 			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${requirement.id})}">Edit</a></td>	

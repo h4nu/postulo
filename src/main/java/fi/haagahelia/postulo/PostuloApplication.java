@@ -1,5 +1,7 @@
 package fi.haagahelia.postulo;
 
+import java.time.LocalDate;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -47,14 +49,16 @@ public class PostuloApplication {
 			log.info("save a couple of requirements");
 			// these generates the requirements multiple times
 			//rrepository.save(new Requirement("reqid", "type", "summary", "rationale", "priority", "source", "owner", "rdate"));
-			rrepository.save(new Requirement("foobar-0001", trepository.findByName("Functional").get(0), "A sample requirement summary", "a sample rationale for testing the requirement database", "Must have", "Sample source", "John Owner", "11/22/2020"));
-			rrepository.save(new Requirement("foobar-0002", trepository.findByName("Functional").get(0), "Another test requirement", "Yet another rationale for testing the requirement app", "Could Have", "Sample source", "John Owner","11/22/2020"));
+			//rrepository.save(new Requirement("foobar-0001", trepository.findByName("Functional").get(0), "A sample requirement summary", "a sample rationale for testing the requirement database", "Must have", "Sample source", "John Owner", "2020-10-30"));
+			rrepository.save(new Requirement("foobar-0001", trepository.findByName("Functional").get(0), "A sample requirement summary", "a sample rationale for testing the requirement database", "Must have", "Sample source", "John Owner", LocalDate.of(2020, 10, 18)));
+			rrepository.save(new Requirement("foobar-0002", trepository.findByName("Functional").get(0), "Another test requirement", "Yet another rationale for testing the requirement app", "Could Have", "Sample source", "John Owner",LocalDate.of(2020, 11, 28)));
 		
 			log.info("fetch all requirements");
 			for (Requirement requirement : rrepository.findAll()) {
 				log.info(requirement.toString());
 			}
 			// Create users: admin/admin user/user
+			// System.out.println();
 			
 	
 			// These are already generated once to heroku-postgresql so these needs to be commented out...

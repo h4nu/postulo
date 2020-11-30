@@ -1,5 +1,7 @@
 package fi.haagahelia.postulo.domain;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -44,11 +49,16 @@ public class Requirement {
 	private String owner;
 	
 	// Stores the date when the requirement has been initially stored
-	private String rdate;
+	// @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+	// private String rdate;
+	@DateTimeFormat(iso = ISO.DATE) private LocalDate rdate;
+	
+	// just extra...
+	LocalDate tanaan = LocalDate.now();
 	
 	public Requirement() {}
 	
-	public Requirement(String reqid, Type type, String summary, String rationale, String priority, String source, String owner, String rdate) {
+	public Requirement(String reqid, Type type, String summary, String rationale, String priority, String source, String owner, LocalDate rdate) {
 		super();
 		this.reqid = reqid;
 		this.type = type;
@@ -125,11 +135,11 @@ public class Requirement {
 		this.owner = owner;
 	}
 
-	public String getRdate() {
+	public LocalDate getRdate() {
 		return rdate;
 	}
 
-	public void setRdate(String rdate) {
+	public void setRdate(LocalDate rdate) {
 		this.rdate = rdate;
 	}
 
