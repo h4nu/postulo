@@ -8,16 +8,33 @@ import org.springframework.stereotype.Service;
 import fi.haagahelia.postulo.domain.Requirement;
 import fi.haagahelia.postulo.domain.RequirementRepository;
 
+/*
+ * This service is created to enable the search functionality
+ * preferably simplify things and remove the extra things 
+ */
+
 @Service
 public class RequirementService  {
 	@Autowired
-    RequirementRepository rrepository;
+    private RequirementRepository rrepository;
      
     public List<Requirement> listAll(String keyword) {
         if (keyword != null) {
             return rrepository.search(keyword);
         }
         return rrepository.findAll();
+    }
+    
+    public void save(Requirement requirement) {
+    	rrepository.save(requirement);
+    }
+    
+    public Requirement get(long id) {
+    	return rrepository.findById(id).get();
+    }
+    
+    public void delete(long id) {
+    	rrepository.deleteById(id);
     }
 
 }

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
@@ -22,6 +23,7 @@ import fi.haagahelia.postulo.domain.Requirement;
 import fi.haagahelia.postulo.domain.RequirementRepository;
 import fi.haagahelia.postulo.domain.TypeRepository;
 
+
 @Controller
 public class RequirementController {
 	@Autowired
@@ -34,6 +36,9 @@ public class RequirementController {
 	public String login() {
 		return "login";
 	} 
+	
+	@Autowired
+	private RequirementService service;
 	
 	@RequestMapping(value="/logout")
 	public String logout (HttpServletRequest request, HttpServletResponse response) {
@@ -52,11 +57,22 @@ public class RequirementController {
 	
 	
 	// Show all requirements
+	// will be replaced by lista and not needed
+	// simplify the code and cleanup if we have time before the course deadline
 	// @RequestMapping(value= {"/", "/requirementlist"})
 	@RequestMapping(value= {"/requirementlist"})
 	public String requirementList(Model model) {	
 		model.addAttribute("requirements", rrepository.findAll());
 	    return "requirementlist";
+	}
+	
+	// List all requirements
+	@RequestMapping(value= {"/lista"})
+	public String viewList(Model model, @Param("keyword") String keyword) {	
+		List<Requirement> listRequirements = service.listAll(keyword);
+		model.addAttribute("listRequirements", listRequirements);
+		model.addAttribute("keyword", keyword);
+	    return "lista";
 	}
 	
 	// RESTful service to get all requirements

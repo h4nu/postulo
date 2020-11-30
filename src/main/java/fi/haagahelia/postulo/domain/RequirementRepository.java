@@ -18,7 +18,7 @@ public interface RequirementRepository  extends CrudRepository<Requirement, Long
 	List<Requirement> findByOwner(String owner);
 	List<Requirement> findByRdate(LocalDate rdate);
 	
-	@Query("SELECT r FROM Requirement r WHERE CONCAT(r.reqid, ' ', r.type, ' ', r.summary, ' ',  r.rationale, ' ',  r.priority, ' ',  r.source, ' ',  r.owner, ' ') LIKE %?1%")
+	@Query("SELECT r FROM Requirement r WHERE CONCAT(r.reqid, ' ', r.type, ' ', r.summary, ' ',  r.rationale, ' ',  r.priority, ' ',  r.source, ' ',  r.owner, ' ',  r.rdate, ' ') LIKE %?1%")
     public List<Requirement> search(String keyword);
 
 }

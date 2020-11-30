@@ -44,51 +44,57 @@
 	
 
 <div class="Lomake">
+    
 
-
+    <br/><br/>
+<form th:action="@{/lista}">
+    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+    &nbsp;
+    <input type="submit" value="Search" />
+    &nbsp;
+    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+</form>
     <table class="lomake table table-striped">
-		<tr>
-		   <th>Id</th>
-		   <th>Type</th>
-		   <th>Summary</th>
-		   <th>Rationale</th>
-		   <th>Priority</th>
-		   <th>Source</th>
-		   <th>Owner</th>
-		   <th>Date</th>
-		   <th> </th>
-		   <th sec:authorize="hasAuthority('ADMIN')"> </th>
-		</tr>  
-    	<tr th:each = "requirement: ${requirements}">
-    	<td th:text="${requirement.reqid}"></td>
-    	<td th:text="${requirement.type.name}"></td>
-    	<td th:text="${requirement.summary}"></td>
-		<td th:text="${requirement.rationale}"></td>
-		<td th:text="${requirement.priority}"></td>
-		<td th:text="${requirement.source}"></td>
-		<td th:text="${requirement.owner}"></td>
-		<td th:text="${requirement.rdate}"></td>
-		
+        
+            <tr>
+                <th>Id</th>
+		   		<th>Type</th>
+		   		<th>Summary</th>
+		   		<th>Rationale</th>
+		   		<th>Priority</th>
+		   		<th>Source</th>
+		   		<th>Owner</th>
+		   		<th>Date</th>
+		   		<th> </th>
+		   		<th sec:authorize="hasAuthority('ADMIN')"> </th>
+            </tr>
+        
+            <tr th:each="requirement : ${listRequirements}">
+                <td th:text="${requirement.reqid}"></td>
+    			<td th:text="${requirement.type.name}"></td>
+    			<td th:text="${requirement.summary}"></td>
+				<td th:text="${requirement.rationale}"></td>
+				<td th:text="${requirement.priority}"></td>
+				<td th:text="${requirement.source}"></td>
+				<td th:text="${requirement.owner}"></td>
+				<td th:text="${requirement.rdate}"></td>
+                
 		
 			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${requirement.id})}">Edit</a></td>	
  			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${requirement.id})}">Delete</a></td>
  			
     	</tr>
-     </table>
-	 <a class="btn btn-success" href="/add">Add Requirement</a>    
+        
+    </table>
+    <a class="btn btn-success" href="/add">Add Requirement</a> 
+</div> 
+</div>  
 
-</div>
-
-<div class="lomake col-md-4 row " style="padding:20px 0">
-<span th:inline="text">[[${#httpServletRequest.remoteUser}]] &nbsp;&nbsp;  </span>
-	<form th:action="@{/logout}" method="post">
-		<input class="btn btn-outline-danger" type="submit" value="Logout"/>
-	</form>
-
-</div>
-
-</div>
-
+<script type="text/javascript">
+    function clearSearch() {
+        window.location = "[[@{/lista}]]";
+    }
+</script>
 
 <!-- Start Scripts Files -->
 <script src="js/jquery-3.3.1.min.js"></script>
