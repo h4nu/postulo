@@ -1,0 +1,177 @@
+/* 
+using the same styles already tested in hanu.org
+if there's time, use suitable fixed background images
+*/
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+
+body {
+  overflow-x: hidden;
+  margin:0;
+  font-family: 'Lato', sans-serif;
+ 
+  background-color: #505962; /* for testing purposes */
+}
+
+/*--- Nav Scrolling Offset --*/
+.offset:before {
+  height: 4rem;
+  margin-top: -1rem;
+  content: "";
+  display: block;
+}
+@media  only screen and (-webkit-min-device-pixel-ratio: 1.3),
+only screen and (-o-min-device-pixel-ratio: 13/10),
+only screen and (min-resolution: 120dpi){
+  .col-sm-6 {
+    float: left;
+    width: 50%;
+    }
+  }
+
+/*--- Extra Bootstrap Column Padding --*/
+[class*="col-"] {
+  padding: 1rem;
+}
+
+/*============== NAVIGATION ===========*/
+.navbar {
+  padding: .7rem 1rem;
+  text-transform: uppercase;
+  font-size: .9rem;
+  font-weight: 400;
+  letter-spacing: .1rem;
+  transition: background-color .5s ease 0s;
+  background-color: rgba(0,0,0,0.7); /* remove this if there's time to add full page image so that the navbar white links appears ok*/
+}
+
+/* change the color and size for something else if we have time*/
+.navbar-brand {
+  color: white;
+}
+
+/* if we have time to use our own logos....*/
+.navbar-brand img {
+  height: 3rem;
+}
+
+.svg-inline--fa.fa-w-14 {
+  color: white;
+  font-size: 1.6rem;
+}
+.navbar-nav li {
+  padding-right: .8rem; 
+}
+.navbar-nav .nav-link {
+  color: white;
+  padding-top: .8rem;
+}
+.navbar-nav .nav-link.active, 
+.navbar-nav .nav-link:hover {
+  color: #00adef;
+}
+/* will be used if we have time to add background images */
+.navbar.solid {
+  background: rgba(0,0,0,0.7)!important;
+  transition: background-color 1s ease 0s;
+}
+/*
+.foobar {
+  padding: 16px;
+  margin-top: 30px;
+  height: 1500px;  
+}
+Used to test scrolling */
+
+/*============== LANDING PAGE ===========*/
+
+.home-inner {
+  /* test background images */
+  background-image: url('/img/hanu.org-pier-1-2560.jpg'); 
+  z-index: -1;
+  /* if the images are too large, let's use just background color*/
+  background-color: #505962;
+}
+
+.caption {
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  top: 8%;
+  color: white;
+  z-index: 1;
+}
+.caption h1 {
+  color: white;
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .3rem;
+  text-shadow: .1rem .1rem .8rem black;
+  padding-bottom: 1rem;
+
+
+}
+.btn-md {
+  border-width: medium;
+  border-radius: 0;
+  padding: .6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  display: inline-block!important;
+}
+
+.lead {
+  font-size: 1rem;
+  /* font-weight: 300; */
+}
+
+.narrow {
+  width: 75%;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+
+label {
+  width: 12em;
+  display: block;
+  /* display: inline; */
+  float: left;
+}
+
+/* 
+#sorting label{
+ display : inline;
+ padding-right : 4px;
+}
+
+#sorting select{
+ margin-top : 4px;
+}
+*/
+
+.lomake {
+ padding-top: 5rem;
+ color: white;
+}
+
+.lomake-sis {
+  padding-left: 1.2rem;
+}
+.sis {
+  text-indent: 12em;
+}
+
+.lomake h1 {
+  color: white;
+  padding: 1rem 1rem;
+}
+
+.reddish {
+  color: red;
+
+}
+
+
+
+

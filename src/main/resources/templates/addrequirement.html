@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Add requirement</title>
+<link rel="shortcut icon" href="img/favicon.ico">
+
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+<link type="text/css" rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" type="text/css" href="/css/fixed.css">
+</head>
+<body data-spy="scroll" data-target="#navbarResponsive">
+<!-- Start Home Section of the page. Offset definition fix the navbar -->
+<div id="Home">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md fixed-top">
+  <div class="container-fluid">
+   <div class="navbar-brand">Requirements repository POC</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"> 
+      <span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"> <a class="nav-link" href="/home">Home</a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/requirementlist">List </a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/add">Add </a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/logout">Logout</a> </li>
+        </ul>
+      </div>
+</div>
+</nav>
+<!-- End Navigation -->
+</div> <!-- End Home Section -->
+
+<div id="Lomake" >
+<div class="Lomake">
+
+<div class="caption">
+	<h1>Add requirement</h1>
+	</div>
+<p>
+	
+<div id="Lomake" class="lomake form-group row">
+	<div class="form-group row lomake">
+		<form th:object="${requirement}" th:action="@{save}" action="#" method="post">
+		
+		  	<label class="lomake-sis" for="reqid">Requirement id</label>
+			<input type="text" id="reqid" th:field="*{reqid}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label class="lomake-sis" for="typelist">Requirement Type</label>
+			<div class="row col-sm-5">
+			<select class="form-control" id="typelist" th:field="*{type}" title="Requirement types">
+       		 <option th:each="type: ${types}" th:value="${type.typeid}" th:text="${type.name}"></option>
+    		</select>
+    		</div>
+	
+		  	<label class="lomake-sis" for="summary">Requirement summary</label>
+			<input type="text" id="summary" th:field="*{summary}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+	
+		  	<label class="lomake-sis" for="rationale">Rationale</label>
+			<input type="text" th:field="*{rationale}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label class="lomake-sis" for="priority">Priority</label>
+			<input type="text" th:field="*{priority}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+		  	<label class="lomake-sis" for="source">Source</label>
+			<input type="text" th:field="*{source}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+	
+		  	<label class="lomake-sis" for="owner">requirement owner</label>
+			<input type="text" th:field="*{owner}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label class="lomake-sis" for="rdate">requirement date</label>
+			<input type="text" th:field="*{rdate}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			
+			<input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+	</div>
+</div>	 
+
+<div class="lomake col-md-4 row " style="padding:20px 0">
+<span th:inline="text">[[${#httpServletRequest.remoteUser}]] &nbsp;&nbsp;  </span>
+	<form th:action="@{/logout}" method="post">
+		<input class="btn btn-outline-danger" type="submit" value="Logout"/>
+	</form>
+
+</div>
+
+
+<!-- Start Scripts Files -->
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.7.1/js/all.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/custom.js"></script>
+<!-- End Scripts Files -->
+</body>
+</html>
