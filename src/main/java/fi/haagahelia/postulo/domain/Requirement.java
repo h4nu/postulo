@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -16,6 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
+@Table(name = "requirement")
 public class Requirement {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -57,6 +59,19 @@ public class Requirement {
 	LocalDate tanaan = LocalDate.now();
 	
 	public Requirement() {}
+	
+	public Requirement(Long id, String reqid, Type type, String summary, String rationale, String priority, String source, String owner, LocalDate rdate) {
+		super();
+		this.id = id;
+		this.reqid = reqid;
+		this.type = type;
+		this.summary = summary;
+		this.rationale = rationale;
+		this.priority = priority;
+		this.source = source;
+		this.owner = owner;
+		this.rdate = rdate;
+	}
 	
 	public Requirement(String reqid, Type type, String summary, String rationale, String priority, String source, String owner, LocalDate rdate) {
 		super();
