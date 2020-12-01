@@ -1,5 +1,7 @@
 package fi.haagahelia.postulo.web;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -21,7 +23,7 @@ public class CSVController {
 	
 	@GetMapping("/download")
 	  public ResponseEntity<Resource> getFile() {
-	    String filename = "tutorials.csv";
+	    String filename = "requirements-" + LocalDate.now() + ".csv";
 	    InputStreamResource file = new InputStreamResource(fileService.load());
 
 	    return ResponseEntity.ok()

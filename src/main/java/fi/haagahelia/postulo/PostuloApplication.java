@@ -45,7 +45,6 @@ public class PostuloApplication {
 				}
 			}
 			
-			
 			log.info("save a couple of requirements");
 			// these generates the requirements multiple times
 			//rrepository.save(new Requirement("reqid", "type", "summary", "rationale", "priority", "source", "owner", "rdate"));
