@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Requirements repository login</title>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}"/>
+	<link type="text/css" rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" type="text/css" href="/css/fixed.css">
+</head>
+<body data-spy="scroll" data-target="#navbarResponsive">
+   
+     <div class="lomake">
+     
+        <div class="alert alert-danger" th:if="${param.error}">
+            Invalid username or password.
+        </div>
+        <div class="alert alert-warning"  th:if="${param.logout}">
+            You have been logged out.
+        </div>
+        
+        <form th:action="@{/login}" method="post">
+        
+            <div class="form-group col-sm-5">
+            	<label> User Name :  </label>
+            	<input class="form-control" type="text" name="username" placeholder="Username">
+            </div>
+            <div class="form-group col-sm-5">
+            <label> Password:  </label>
+            <input class="form-control" type="password" name="password" placeholder="Password">
+            </div>
+            
+            <button type="submit" class="btn btn-primary"value="Sign In">Sign in</button>
+            
+        </form>
+        <a th:href="@{/signup}">Sign-up</a>
+        </div>
+    </body>
+</html>

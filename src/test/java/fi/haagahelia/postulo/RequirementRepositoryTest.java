@@ -28,10 +28,9 @@ import fi.haagahelia.postulo.domain.TypeRepository;
 
 /*
  * These tests works when database configurations has been stated directly in the application.properties
- * but fails if using eclipse environt variables like
- * spring.datasource.url=${SPRING_DATASOURCE_URL}
- * tested and verified that these tests works, but will replace the database configuration with the
- * environment variables
+ * but fails if using eclipse environt variables like spring.datasource.url=${SPRING_DATASOURCE_URL}
+ * if separate environment variables has not been stated in the eclipse for the tests too
+ * So, please DEFINE THE ENVIRONMENT VARIABLES FOR TESTS TOO!!!
  */
 
 @DataJpaTest
@@ -62,8 +61,10 @@ public class RequirementRepositoryTest {
 	@Test
 	public void createNewRequirement() {
 		log.info("Running createNewRequirement");
-		Requirement requirement = new Requirement("foobar-0003", typeRepository.findByName("Functional").get(0), "Sample requirement", "Yet another rationale", "Should Have", "Customer Foo", "Jim Owner",LocalDate.of(2020, 11, 30));
+		// Requirement requirement = new Requirement("foobar-0003", typeRepository.findByName("Functional").get(0), "Sample requirement", "Yet another rationale", "Should Have", "Customer Foo", "Jim Owner",LocalDate.of(2020, 11, 30));
+		Requirement requirement = new Requirement("foobar-0003", typeRepository.findByName("Functional").get(0), "Testing requirement", "A testing rationale", "Could Have", "Test source", "John Owner",LocalDate.of(2020, 11, 28));
 		requirementRepository.save(requirement);
+		System.out.println("vaaatimusid tulisi tahan" + requirement.getId());
 		assertThat(requirement.getId()).isNotNull();
 	}
 	
@@ -94,6 +95,7 @@ public class RequirementRepositoryTest {
 	
 	// UserRepository tests
 	
+	/*
 	@Test
 	public void findByUser() {
 		log.info("Running findByUser");
@@ -118,5 +120,5 @@ public class RequirementRepositoryTest {
 			userRepository.delete(user);
 		}
 	}	
-	
+	*/
 }
