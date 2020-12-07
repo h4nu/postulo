@@ -3,12 +3,17 @@ package fi.haagahelia.postulo.spring;
 import java.io.File;
 import java.io.IOException;
 
+import java.io.InputStream;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.annotation.Order;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -41,6 +46,8 @@ import com.maxmind.geoip2.exception.GeoIp2Exception;
 //@ImportResource({ "classpath:webSecurityConfig.xml" })
 @EnableWebSecurity
 public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(SecSecurityConfig.class);
 	
 	@Autowired
     private UserDetailsService userDetailsService;
@@ -152,10 +159,39 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         return rememberMeServices;
     }
 
+    // not yet implemented completely 
+    /*
     @Bean(name="GeoIPCountry")
     public DatabaseReader databaseReader() throws IOException, GeoIp2Exception {
+    	
+    	// final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
+    	
         final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
+        System.out.println("mihis se menikaan " + resource);
         return new DatabaseReader.Builder(resource).build();
     }
+    
+    //ClassLoader cl = this.getClass().getClassLoader();
+	// InputStream inputStream = cl.getResourceAsStream(pathToMyFile);
+    
+    
+    */
+    @Bean(name="GeoIPCountry")
+    public DatabaseReader databaseReader() throws IOException, GeoIp2Exception {
+    	
+    	// final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
+    	final String geoIpFileName = "src/main/resources/maxmind/GeoLite2-Country.mmdb";
+    	
+    	ClassLoader cl = this.getClass().getClassLoader();
+    	InputStream inputStream = cl.getResourceAsStream(geoIpFileName);
+    	
+    	
+        // final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
+        System.out.println("mihis se menikaan " + inputStream);
+        return new DatabaseReader.Builder(inputStream).build();
+        }
+    
+    
+    
 
 }

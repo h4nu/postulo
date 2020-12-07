@@ -62,6 +62,7 @@ public class UserService implements IUserService {
     @Autowired
     private SessionRegistry sessionRegistry;
 
+    // Not yet used
     @Autowired
     @Qualifier("GeoIPCountry")
     private DatabaseReader databaseReader;
