@@ -2,6 +2,7 @@ package fi.haagahelia.postulo.spring;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +20,7 @@ public class LoginNotificationConfig {
         return new Parser();
     }
 
+    /*
     @Bean(name="GeoIPCity")
     public DatabaseReader databaseReader() throws IOException {
         File database = ResourceUtils
@@ -26,4 +28,14 @@ public class LoginNotificationConfig {
         return new DatabaseReader.Builder(database)
                 .build();
     }
+    */
+    @Bean(name="GeoIPCity")
+    public DatabaseReader databaseReader() throws IOException {
+        InputStream database = ResourceUtils
+                // .getFile("classpath:maxmind/GeoLite2-City.mmdb");
+        		.getURL("src/main/resources/maxmind/GeoLite2-Country.mmdb").openStream();
+        return new DatabaseReader.Builder(database)
+                .build();
+    }
+    
 }

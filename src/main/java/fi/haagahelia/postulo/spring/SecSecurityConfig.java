@@ -159,17 +159,12 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         return rememberMeServices;
     }
 
-    // not yet implemented completely 
+    // changes needed for Heroku
     
     @Bean(name="GeoIPCountry")
     public DatabaseReader databaseReader() throws IOException, GeoIp2Exception {
-    	
-    	// final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
-    	
         final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
-        System.out.println("mihis se menikaan " + resource);
         return new DatabaseReader.Builder(resource).build();
     }
-   
 
 }
