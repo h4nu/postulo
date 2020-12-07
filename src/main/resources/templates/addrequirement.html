@@ -79,7 +79,7 @@
 			<input type="text" th:field="*{owner}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			
-			<input type="date" id="rdate" th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" th:attr="name='rdate'" style="display:none;"/>
+			<input type="date" id="rdate"  th:value="${#dates.format(#dates.createNow(), 'yyyy-MM-dd')}" th:attr="name='rdate'" style="display:none;"/>
 			
 			<input type="submit" class="btn btn-success" value="Save"></input>
 		</form>
@@ -89,7 +89,7 @@
 
 
 <div class="lomake col-md-4 row " style="padding:20px 0">
-<span th:inline="text">[[${#httpServletRequest.remoteUser}]] &nbsp;&nbsp;  </span>
+
 	<form th:action="@{/logout}" method="post">
 		<input class="btn btn-outline-danger" type="submit" value="Logout"/>
 	</form>

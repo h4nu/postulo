@@ -89,7 +89,7 @@ public class RequirementController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Requirement requirement){
         rrepository.save(requirement);
-        return "redirect:requirementlist";
+        return "redirect:lista";
     }    
 
 	// Delete requirement
