@@ -1,7 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-<title th:utext="#{label.pages.home.title}">home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title th:utext="#{label.pages.home.title}">home</title>
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/fixed.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -15,19 +21,23 @@
     </div>
 </nav>
 
-    <div class="container">
+    <div class="container lomake">
 	    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')" th:utext="#{label.pages.user.message}">user</div>
 	
 	    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')" th:utext="#{label.pages.admin.message}"></div>
 	     
 	    <p th:if="${param.user} != null" th:text="${param.user[0]}">user</p>
-	     
-	    <a class="btn btn-default" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
-		<br /> <br />
-	    <a th:href="@{/loggedUsers}" th:utext="#{label.pages.users.message}">View logged in users</a>
-		<br />	    
-	    <a th:href="@{/loggedUsersFromSessionRegistry}" th:utext="#{label.pages.users.sessionregistry.message}">View logged in users</a>
 	    
+	    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
+	    <a class="btn btn-light" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
+	    </div>
+		<br /> <br />
+		
+	    <a class="btn btn-primary" th:href="@{/loggedUsers}" th:utext="#{label.pages.users.message}">View logged in users</a>
+		<br /> <br/>
+		<div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
+	    <a class="btn btn-primary" th:href="@{/loggedUsersFromSessionRegistry}" th:utext="#{label.pages.users.sessionregistry.message}">View logged in users</a>
+	    </div>
     </div>
 </body>
 </html>

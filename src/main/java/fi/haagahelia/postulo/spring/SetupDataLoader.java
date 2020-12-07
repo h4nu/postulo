@@ -70,6 +70,11 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         // == create initial user
         createUserIfNotFound("test@test.com", "Test", "Test", "test", new ArrayList<>(Arrays.asList(adminRole)));
+        // == create your own admin user with working email if you plan to use GeoIP feature as the it doesn't have yet 
+        // the ipaddress stored and it tries to send email to address stored in the database
+        // otherwise you can change the email address of the admin user via the database cli
+        // createUserIfNotFound("youradmin@yourdomain.com", "Firstname", "Lastname", "yourpassword", new ArrayList<>(Arrays.asList(adminRole)));
+        
 
         alreadySetup = true;
     }

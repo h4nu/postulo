@@ -41,16 +41,18 @@
 	<div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
     <h1>This is the landing page for the admin</h1>
     <br>
+     <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')"> This text is only visible to an admin</div>
     <br>
     <a class="btn btn-light" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
     </div>
+    <br>
     
     <div sec:authorize="hasAuthority('READ_PRIVILEGE')">
     
     <h1>This is a console for the user</h1>
     </div>
           
-    <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')"> This text is only visible to an admin</div>
+   
     
       
       <br>

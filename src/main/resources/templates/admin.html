@@ -1,8 +1,12 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
-<title th:utext="#{label.pages.home.title}"></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<title th:utext="#{label.pages.home.title}"></title>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/fixed.css">
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -16,7 +20,7 @@
     </div>
 </nav>
 
-<div class="container">         
+<div class="container lomake">         
      <p sec:authorize="!hasAuthority('WRITE_PRIVILEGE')" th:utext="#{message.unauth}">unauth</p>
         
      <h1 sec:authorize="hasAuthority('WRITE_PRIVILEGE')" th:utext="#{label.pages.admin.message}">admin</h1>
