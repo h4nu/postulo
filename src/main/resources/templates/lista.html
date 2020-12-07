@@ -43,7 +43,6 @@
 	<div class="caption">
 		<h1>Requirement list</h1>
 	</div>
-	
 
 <div class="Lomake">
     
@@ -69,7 +68,7 @@
 		   		<th>Owner</th>
 		   		<th>Date</th>
 		   		<th> </th>
-		   		<th sec:authorize="hasAuthority('ADMIN')"> </th>
+		   		<th sec:authorize="hasAuthority('WRITE_PRIVILEGE')"> </th>
             </tr>
         
             <tr th:each="requirement : ${listRequirements}">
@@ -84,7 +83,7 @@
                 
 		
 			<td><a class="btn btn-success" th:href="@{/edit/{id}(id=${requirement.id})}">Edit</a></td>	
- 			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${requirement.id})}">Delete</a></td>
+ 			<td sec:authorize="hasAuthority('WRITE_PRIVILEGE')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${requirement.id})}">Delete</a></td>
  			
     	</tr>
         
