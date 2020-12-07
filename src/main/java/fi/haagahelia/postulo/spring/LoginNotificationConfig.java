@@ -33,7 +33,7 @@ public class LoginNotificationConfig {
     public DatabaseReader databaseReader() throws IOException {
         InputStream database = ResourceUtils
                 // .getFile("classpath:maxmind/GeoLite2-City.mmdb");
-        		.getURL("src/main/resources/maxmind/GeoLite2-Country.mmdb").openStream();
+        		.getURL("src/main/resources/maxmind/GeoLite2-City.mmdb").openStream();
         return new DatabaseReader.Builder(database)
                 .build();
     }
