@@ -160,7 +160,7 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     // not yet implemented completely 
-    /*
+    
     @Bean(name="GeoIPCountry")
     public DatabaseReader databaseReader() throws IOException, GeoIp2Exception {
     	
@@ -170,28 +170,6 @@ public class SecSecurityConfig extends WebSecurityConfigurerAdapter {
         System.out.println("mihis se menikaan " + resource);
         return new DatabaseReader.Builder(resource).build();
     }
-    
-    //ClassLoader cl = this.getClass().getClassLoader();
-	// InputStream inputStream = cl.getResourceAsStream(pathToMyFile);
-    
-    
-    */
-    @Bean(name="GeoIPCountry")
-    public DatabaseReader databaseReader() throws IOException, GeoIp2Exception {
-    	
-    	// final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
-    	final String geoIpFileName = "src/main/resources/maxmind/GeoLite2-Country.mmdb";
-    	
-    	ClassLoader cl = this.getClass().getClassLoader();
-    	InputStream inputStream = cl.getResourceAsStream(geoIpFileName);
-    	
-    	
-        // final File resource = new File("src/main/resources/maxmind/GeoLite2-Country.mmdb");
-        System.out.println("mihis se menikaan " + inputStream);
-        return new DatabaseReader.Builder(inputStream).build();
-        }
-    
-    
-    
+   
 
 }
