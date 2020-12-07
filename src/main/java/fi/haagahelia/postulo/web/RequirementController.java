@@ -55,17 +55,6 @@ public class RequirementController {
 	// 
 	return "home"; }
 	
-	
-	// Show all requirements
-	// will be replaced by lista and not needed
-	// simplify the code and cleanup if we have time before the course deadline
-	// @RequestMapping(value= {"/", "/requirementlist"})
-	@RequestMapping(value= {"/requirementlist"})
-	public String requirementList(Model model) {	
-		model.addAttribute("requirements", rrepository.findAll());
-	    return "requirementlist";
-	}
-	
 	// List all requirements
 	@RequestMapping(value= {"/lista"})
 	public String viewList(Model model, @Param("keyword") String keyword) {	
@@ -100,14 +89,14 @@ public class RequirementController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(Requirement requirement){
         rrepository.save(requirement);
-        return "redirect:requirementlist";
+        return "redirect:lista";
     }    
 
 	// Delete requirement
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteRequirement(@PathVariable("id") Long requirementId, Model model) {
     	rrepository.deleteById(requirementId);
-        return "redirect:../requirementlist";
+        return "redirect:../lista";
     }
 
     // Edit requirement
