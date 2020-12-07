@@ -1,31 +1,62 @@
-<html>
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Console</title>
+
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" th:href="@{css/bootstrap.min.css}"/>
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/fixed.css">
 </head>
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" th:href="@{/homepage.html}" th:utext="#{label.pages.home.title}">home</a>
-    </div> 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/logout">logout</a> </li>
-      </ul>
-    </div>
-</nav>
 
-<div class="container">
+<!-- Navigation -->
+<nav class="navbar navbar-expand-md fixed-top">
+	<div class="container-fluid">
+	 <div class="navbar-brand">Requirements repository POC</div>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"> 
+    	<span class="custom-toggler-icon"><i class="fas fa-bars"></i></span>
+  		</button>
+  		<div class="collapse navbar-collapse" id="navbarResponsive">
+  			<ul class="navbar-nav ml-auto">
+            <li class="nav-item" > <a class="nav-link" th:href="@{/homepage.html}" th:utext="#{label.pages.home.title}">Home</a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/lista">List </a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/add">Add </a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/api/csv/download">Download</a> </li>
+      		<li class="nav-item"> <a class="nav-link" href="/console">Console </a> </li>
+            <li class="nav-item"> <a class="nav-link" href="/logout">Logout</a> </li>
+        </ul>
+  		</div>
+</div>
+</nav>
+<!-- End Navigation -->
+
+
+<div class="container lomake">
+
 	<div th:if="${message != null}" class="alert alert-info" th:utext="${message}">message</div>
 	
+	<div sec:authorize="hasAuthority('WRITE_PRIVILEGE')">
     <h1>This is the landing page for the admin</h1>
+    <br>
+    <br>
+    <a class="btn btn-light" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
+    </div>
     
-    <div sec:authorize="hasAuthority('READ_PRIVILEGE')">This text is only visible to a user</div>
+    <div sec:authorize="hasAuthority('READ_PRIVILEGE')">
+    
+    <h1>This is a console for the user</h1>
+    </div>
           
     <div sec:authorize="hasAuthority('WRITE_PRIVILEGE')"> This text is only visible to an admin</div>
     
-      <a class="btn btn-default" th:href="@{/admin.html}" th:utext="#{label.pages.admin}">admin</a>
+      
+      <br>
       <br/>
-      <a class="btn btn-default" th:href="@{/changePassword.html}" th:utext="#{message.changePassword}">change password</a>
+      <div sec:authorize="hasAuthority('READ_PRIVILEGE')">You can change the password below:</div>
+      <a class="btn btn-light" th:href="@{/changePassword.html}" th:utext="#{message.changePassword}">change password</a>
       <br/>
       <br/>
       <br/>

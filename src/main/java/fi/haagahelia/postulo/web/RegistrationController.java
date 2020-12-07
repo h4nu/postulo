@@ -56,9 +56,9 @@ public class RegistrationController {
 
     @GetMapping("/registrationConfirm")
     public ModelAndView confirmRegistration(final HttpServletRequest request, final ModelMap model, @RequestParam("token") final String token) throws UnsupportedEncodingException {
-    	System.out.println("printataan token " + token);
+    	// System.out.println("printataan token " + token);
         Locale locale = request.getLocale();
-        System.out.println("printataan locale" + locale);
+        // System.out.println("printataan locale" + locale);
         model.addAttribute("lang", locale.getLanguage());
         final String result = userService.validateVerificationToken(token);
         if (result.equals("valid")) {
@@ -67,6 +67,7 @@ public class RegistrationController {
             // model.addAttribute("qr", userService.generateQRUrl(user));
             // return "redirect:/qrcode.html?lang=" + locale.getLanguage();
             // }
+            //
             authWithoutPassword(user);
             model.addAttribute("messageKey", "message.accountVerified");
             return new ModelAndView("redirect:/console", model);

@@ -94,7 +94,9 @@
 
 	
 <div class="lomake col-md-4 row " style="padding:20px 0">
+<!--  
 <span th:inline="text">[[${#httpServletRequest.remoteUser}]] &nbsp;&nbsp;  </span>
+-->
 	<form th:action="@{/logout}" method="post">
 		<input class="btn btn-outline-danger" type="submit" value="Logout"/>
 	</form>
