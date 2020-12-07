@@ -96,7 +96,7 @@ public class RequirementController {
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String deleteRequirement(@PathVariable("id") Long requirementId, Model model) {
     	rrepository.deleteById(requirementId);
-        return "redirect:../requirementlist";
+        return "redirect:../lista";
     }
 
     // Edit requirement
