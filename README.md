@@ -11,5 +11,5 @@ A very basic requirements repository poc for the Server Programming SWD4TF021-30
 - Downloads the requirements as CSV file
 
 Disable the GeoIP feature if testing locally as it doesn't work with localhost addresses. 
-Toggle the feature off by setting the geo.ip.lib.enabled parameter as false in your application.properties file: 
+Toggle the feature off by setting the geo.ip.lib.enabled parameter as false in your application.properties file:  
 geo.ip.lib.enabled=false
