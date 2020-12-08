@@ -11,5 +11,5 @@ A very basic requirements repository proof of concept (POC) for the Server Progr
 - Downloads the requirements as CSV file
 
 Disable the GeoIP feature if testing locally as it doesn't work with localhost addresses.
-Toggle the feature off by setting the geo.ip.lib.enabled parameter as false in your application.properties file:
+Toggle the feature off by setting the geo.ip.lib.enabled parameter as false in your application.properties file:  
 geo.ip.lib.enabled=false
