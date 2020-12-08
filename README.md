@@ -1,6 +1,5 @@
 # postulo
-a very basic requirements repository poc for the Server Programming SWD4TF021-3007 course
-With a following features
+a very basic requirements repository poc for the Server Programming SWD4TF021-3007 course with following features
 
 - Bacic requirements management features
   - Create, Read, Update and Delete
